@@ -89,19 +89,19 @@ if __name__ == '__main__':
     print u'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
     print u'耗时：%s' %use_time
 
-    # start_time = time.time()
-    # result = sol.countPrimes2(n)
-    # use_time = time.time() - start_time
+    start_time = time.time()
+    result = sol.countPrimes2(n)
+    use_time = time.time() - start_time
 
-    # print '-'*40
-    # print u'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
-    # print u'耗时：%s' %use_time
+    print '-'*40
+    print u'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
+    print u'耗时：%s' %use_time
 
-    # start_time = time.time()
-    # result = sol.countPrimes3(n)
-    # use_time = time.time() - start_time
+    start_time = time.time()
+    result = sol.countPrimes3(n)
+    use_time = time.time() - start_time
 
-    # print '-'*40
-    # print u'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
-    # print u'耗时：%s' %use_time
-    # 
+    print '-'*40
+    print u'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
+    print u'耗时：%s' %use_time
+    
