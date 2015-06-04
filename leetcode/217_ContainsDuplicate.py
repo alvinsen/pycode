@@ -44,25 +44,25 @@ if __name__ == '__main__':
     print 'nums is : %s, 是否有重复值： %s' %(nums, result)
     print '耗时：%s' %use_time
 
-    start_time = time.time()
-    result = sol.containsDuplicate2(nums)
-    use_time = time.time() - start_time
+    # start_time = time.time()
+    # result = sol.containsDuplicate2(nums)
+    # use_time = time.time() - start_time
 
-    print 'nums is : %s, 是否有重复值： %s' %(nums, result)
-    print '耗时：%s' %use_time
+    # print 'nums is : %s, 是否有重复值： %s' %(nums, result)
+    # print '耗时：%s' %use_time
 
-    start_time = time.time()
-    result = sol.containsDuplicate3(nums)
-    use_time = time.time() - start_time
+    # start_time = time.time()
+    # result = sol.containsDuplicate3(nums)
+    # use_time = time.time() - start_time
 
-    print 'nums is : %s, 是否有重复值： %s' %(nums, result)
-    print '耗时：%s' %use_time
+    # print 'nums is : %s, 是否有重复值： %s' %(nums, result)
+    # print '耗时：%s' %use_time
 
-    start_time = time.time()
-    result = sol.containsDuplicate4(nums)
-    use_time = time.time() - start_time
+    # start_time = time.time()
+    # result = sol.containsDuplicate4(nums)
+    # use_time = time.time() - start_time
 
-    print 'nums is : %s, 是否有重复值： %s' %(nums, result)
-    print '耗时：%s' %use_time
+    # print 'nums is : %s, 是否有重复值： %s' %(nums, result)
+    # print '耗时：%s' %use_time
 
-    
+
