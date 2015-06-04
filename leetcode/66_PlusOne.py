@@ -33,7 +33,11 @@ class Solution:
     def plusOne3(self, digits):
         return map(int,list(str(int(''.join(map(str,digits)))+1)))
 
-
+    def plusOne4(self, digits):
+        num = 0
+        for i in range(len(digits)):
+            num += digits[i] * pow(10, (len(digits)-1-i))
+        return [int(i) for i in str(num+1)]
 
 
 if __name__ == '__main__':
@@ -48,12 +52,28 @@ if __name__ == '__main__':
     print u'数组为：%s, 加一后数组为：%s' %(digits, result)
     print u'耗时：%s' %use_time
 
-    start_time = time.time()
-    result = sol.plusOne2(digits)
-    use_time = time.time() - start_time
+    # start_time = time.time()
+    # result = sol.plusOne2(digits)
+    # use_time = time.time() - start_time
 
-    print '-'*40
-    print u'数组为：%s, 加一后数组为：%s' %(digits, result)
-    print u'耗时：%s' %use_time
+    # print '-'*40
+    # print u'数组为：%s, 加一后数组为：%s' %(digits, result)
+    # print u'耗时：%s' %use_time
+
+    # start_time = time.time()
+    # result = sol.plusOne3(digits)
+    # use_time = time.time() - start_time
+
+    # print '-'*40
+    # print u'数组为：%s, 加一后数组为：%s' %(digits, result)
+    # print u'耗时：%s' %use_time
+
+    # start_time = time.time()
+    # result = sol.plusOne4(digits)
+    # use_time = time.time() - start_time
+
+    # print '-'*40
+    # print u'数组为：%s, 加一后数组为：%s' %(digits, result)
+    # print u'耗时：%s' %use_time
 
     
