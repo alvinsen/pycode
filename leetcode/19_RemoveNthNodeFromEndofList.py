@@ -116,12 +116,9 @@ if __name__ == '__main__':
     h2 = ListNode(2)
     h3 = ListNode(3)
     h4 = ListNode(4)
-    h5 = ListNode(5)
     h1.next = h2
     h2.next = h3
     h3.next = h4
-    h4.next = h5
-
     n = 2
 
     start_time = time.time()
