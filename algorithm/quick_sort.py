@@ -4,7 +4,7 @@ import random
 import time
 import math
 """
-    python 实现快速排序
+    python 实现快速排序。。。最坏时间：O(n**2), 时间复杂度为：O(nlgn)
     快速排序的思想：
     快速排序采用的思想是分治思想。
     快速排序是找出一个元素（理论上可以随便找一个）作为基准(pivot), 然后对数组进行分区操作, 
