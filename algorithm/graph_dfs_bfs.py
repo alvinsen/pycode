@@ -71,35 +71,43 @@ class Graph(object):
             递归实现 深度优先遍历
         """
         def dfs(self, i):
-            print(i)
+            order.append(i)
             visited[i] = 1
             for j in range(self.nodenum):
                 if self.map[i][j] == 1 and visited[j] == 0:
                     dfs(self, j)
+
+        order = []
         visited = [0] * self.nodenum
         for i in range(self.nodenum):
             if visited[i] == 0:
                 dfs(self, i)
+        print order
+        return order
 
     def breadth_first_search(self):
         """
             队列实现 广度优先遍历
         """
-        def bfs(self, i, queue):
-            queue.append(i)
-            print i
-            visited[i] = 1
-            if len(queue) != 0:
-                j = queue.pop(0)
-                for k in range(self.nodenum):
-                    if self.map[j][k] == 1 and visited[k] == 0:
-                        bfs(self, k, queue)
-
+        order = []
         queue = []
         visited = [0] * self.nodenum
         for i in range(self.nodenum):
             if visited[i] == 0:
-                bfs(self, i, queue)
+                visited[i] = 1
+                # 将节点加入 遍历表
+                queue.append(i)
+                order.append(i)
+                while len(queue) != 0:
+                    j = queue.pop(0)
+                    for k in range(self.nodenum):
+                        # 判断其他顶点与当前顶点存在边，且未访问过
+                        if self.map[j][k] == 1 and visited[k] == 0:
+                            visited[k] = 1
+                            order.append(k)
+                            queue.append(k)
+        print order
+        return order
 
 if __name__ == '__main__':
     # 邻接矩阵实现图结构
