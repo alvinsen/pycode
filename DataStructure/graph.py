@@ -89,6 +89,30 @@ class Graph_Matrix(object):
         """
             队列实现 广度优先遍历
         """
+        order = []
+        queue = []
+        visited = [0] * self.nodenum
+        for i in range(self.nodenum):
+            if visited[i] == 0:
+                visited[i] = 1
+                # 将节点加入 遍历表
+                queue.append(i)
+                order.append(i)
+                while len(queue) != 0:
+                    j = queue.pop(0)
+                    for k in range(self.nodenum):
+                        # 判断其他顶点与当前顶点存在边，且未访问过
+                        if self.map[j][k] == 1 and visited[k] == 0:
+                            visited[k] = 1
+                            order.append(k)
+                            queue.append(k)
+        print order
+        return order
+
+    def breadth_first_search_no_bfs(self):
+        """
+            该方法虽然使用队列实现，不过依然是dfs，并不是bfs。。。
+        """
         def bfs(self, i, queue):
             queue.append(i)
             order.append(i)
@@ -264,6 +288,9 @@ if __name__ == '__main__':
 
     print '-'*20 + "广度优先遍历DFS" + '-'*20
     g.breadth_first_search()
+
+    print '-'*20 + "广度优先遍历DFS" + '-'*20
+    g.breadth_first_search2()
 
     print '+' * 100
 
