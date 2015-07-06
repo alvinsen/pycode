@@ -3,7 +3,7 @@
 """
 无向图的最小生成树算法：Prim算法（普里姆）
 最小生成树 prim算法的python实现  
-普里姆（Prim）算法：由线到点，适合边稠密。时间复杂度O(N^2) 
+普里姆（Prim）算法：由线到点，适合边稠密。时间复杂度O(n^2) 
 """
 MAXNUM = 65535
 class Graph(object):
@@ -66,7 +66,7 @@ def MiniSpanTree_Prim(graph):
             adjvex[i]: 表示 i 和当前树上节点所连的最小边（到目前树上哪个节点最近） adjvex[i]=k 表示i和k 离得最近
         lowcost: 保存相关顶点间边的权值 
     """
-    min_tree = []
+    min_span_tree = []
     g = graph
     nodenum = g.nodenum
     adjvex = [0]    # 从下标为0 开始，作为最小生成树的根开始遍历，权值为0
@@ -92,7 +92,7 @@ def MiniSpanTree_Prim(graph):
 
         # 打印当前顶点边中权值最小的边, adjvex[k] 表示上一次找到的最小值的下标
         # print '(%d, %d), weight: %s' %(adjvex[k], k, lowcost[k]) 
-        min_tree.append({'(%d, %d)'%(adjvex[k],k): lowcost[k]})
+        min_span_tree.append({'(%d, %d)'%(adjvex[k],k): lowcost[k]})
         # 将当前顶点的权值置为0，表示当前顶点已经完成任务
         lowcost[k] = 0 
         # 邻接矩阵 k 行逐个遍历所有顶点， g.map[k][j] 表示k 行所有顶点
@@ -103,8 +103,54 @@ def MiniSpanTree_Prim(graph):
                 # j 元素与 k 元素有联系。。。
                 adjvex[j] = k
 
-    print min_tree
-    return min_tree
+    print min_span_tree
+    return min_span_tree
+
+def MiniSpanTree_Prim_2(graph):
+    """
+    最小生成树prim 算法
+    使用邻接矩阵表示图，时间复杂度为 O(n^2)
+    dis[i]: 表示 i 节点到最小生成树的距离，即 i 点到 k点的距离，k点为当前树的最后顶点
+    pre[i]: 表示 i 节点的前驱是 pre[i], pre[i]已经加入到最小生成树中
+    flag[i]: 表示 i 节点是否已经加入生成树
+    参考网上的方法，这个方法应该更好理解一些
+    """
+    g = graph
+    n = g.nodenum
+    min_span_tree = []
+
+    dis = [0] * n
+    pre = [0] * n
+    flag = [False] * n
+    flag[0] = True
+    # 从0节点开始
+    k = 0
+    for i in range(n):
+        # dis[i] 表示 i到k节点的距离
+        dis[i] = g.map[k][i]
+    for j in range(1, n):
+        mini = MAXNUM
+        for i in range(n):
+            if mini > dis[i] and not flag[i]:
+                mini = dis[i]
+                k = i
+        print 'j: %s, k: %s' %(j, k)
+        if k == 0:
+            # 当前顶点0 与其他顶点都不连通
+            return
+        # 打印当前顶点边中权值最小的边, adjvex[k] 表示上一次找到的最小值的下标
+        # print '(%d, %d), weight: %s' %(adjvex[k], k, lowcost[k]) 
+        min_span_tree.append({'(%d, %d)'%(pre[k], k): dis[k]})
+        
+        # 表示k这个点 已经加入了最小生成树
+        flag[k] = True
+        for i in range(n):
+            if dis[i] > g.map[k][i] and not flag[i]:
+                dis[i] = g.map[k][i]
+                pre[i] = k
+    # print 'dis: %s, pre: %s ' %(dis, pre)
+    print 'min_span_tree: %s' %min_span_tree
+    return min_span_tree
 
 if __name__ == '__main__':
     # 邻接矩阵实现图结构
@@ -131,3 +177,4 @@ if __name__ == '__main__':
     # print '初始化创建图形结构: ', g.map
     MiniSpanTree_Prim(g)
 
+    MiniSpanTree_Prim_2(g)
