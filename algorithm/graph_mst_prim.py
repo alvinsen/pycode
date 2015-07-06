@@ -134,12 +134,12 @@ def MiniSpanTree_Prim_2(graph):
             if mini > dis[i] and not flag[i]:
                 mini = dis[i]
                 k = i
-        print 'j: %s, k: %s' %(j, k)
+        # print 'j: %s, k: %s' %(j, k)
         if k == 0:
             # 当前顶点0 与其他顶点都不连通
             return
-        # 打印当前顶点边中权值最小的边, adjvex[k] 表示上一次找到的最小值的下标
-        # print '(%d, %d), weight: %s' %(adjvex[k], k, lowcost[k]) 
+        # 打印当前顶点边中权值最小的边, pre[k] 表示上一次找到的最小值的下标
+        # print '(%d, %d), weight: %s' %(pre[k], k, dis[k]) 
         min_span_tree.append({'(%d, %d)'%(pre[k], k): dis[k]})
         
         # 表示k这个点 已经加入了最小生成树
@@ -148,7 +148,7 @@ def MiniSpanTree_Prim_2(graph):
             if dis[i] > g.map[k][i] and not flag[i]:
                 dis[i] = g.map[k][i]
                 pre[i] = k
-    # print 'dis: %s, pre: %s ' %(dis, pre)
+    print 'dis: %s, pre: %s ' %(dis, pre)
     print 'min_span_tree: %s' %min_span_tree
     return min_span_tree
 
