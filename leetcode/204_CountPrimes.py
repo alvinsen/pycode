@@ -75,33 +75,54 @@ class Solution:
         """
             筛素数法
         """
-        pass
+        flags = [True] * n
+        res = []
+        maxnum = n
+        for p in range(2, n):
+            if not flags[p]:
+                continue
+            res.append(p)
+            # 2的时候，筛掉的第一个数是4
+            # 3的时候，筛掉的第一个数是9（因为6已经被2筛掉了）
+            # 5的时候，筛掉的第一个数是25（因为10，15，20都已经被筛掉了）
+            for i in range(p*p, n, p):
+                flags[i] = False
+        return (len(res), res)
 
 if __name__ == '__main__':
     sol = Solution()
-    n = 10
+    n = 10000
 
     start_time = time.time()
     result = sol.countPrimes(n)
     use_time = time.time() - start_time
 
     print '-'*40
-    print u'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
-    print u'耗时：%s' %use_time
+    print 'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
+    print '耗时：%s' %use_time
 
     start_time = time.time()
     result = sol.countPrimes2(n)
     use_time = time.time() - start_time
 
     print '-'*40
-    print u'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
-    print u'耗时：%s' %use_time
+    print 'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
+    print '耗时：%s' %use_time
 
     start_time = time.time()
     result = sol.countPrimes3(n)
     use_time = time.time() - start_time
 
     print '-'*40
-    print u'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
-    print u'耗时：%s' %use_time
+    print 'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
+    print '耗时：%s' %use_time
+
+
+    start_time = time.time()
+    result = sol.countPrimes4(n)
+    use_time = time.time() - start_time
+
+    print '-'*40
+    print 'n：%s 以内素数为：%s， 个数为：%s' %(n, result[1], result[0])
+    print '耗时：%s' %use_time
     
