@@ -65,7 +65,7 @@ def binary_insert_sort(lis):
 if __name__ == '__main__':
     lst = random.sample(xrange(100), 10)
 
-    print u'待排序序列为：%s' %(lst) 
+    print '待排序序列为：%s' %(lst) 
     insert_sort(lst)
     print '-'*50
     binary_insert_sort(lst)
